@@ -1,0 +1,16 @@
+.header{
+	padding: 10px;
+}
+.align-left{
+	/*text-align:left;*/
+}
+.logo{
+	width: 160px;
+}
+form{
+    padding: 100px!important;
+	/*margin: 1000px auto;*/
+}
+.h20{
+	height: 20px
+}
