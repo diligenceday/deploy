@@ -12,6 +12,7 @@ const layout = {
   	// maxWidth:30
   }
 };
+console.log("done");
 
 function Erc20claim() {
 
