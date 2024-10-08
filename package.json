@@ -1,7 +1,7 @@
 {
   "name": "deponline",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "https://diligenceday.github.io/deploy/build/",
   "private": true,
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.1.7",
