@@ -8,6 +8,7 @@ import {
   optimism,
   arbitrum,
   base,
+  sepolia,
   localhost
 } from 'wagmi/chains';
 
@@ -39,10 +40,11 @@ const localChain = {
 
 // alert(localhost.id)
 export const config = createConfig({
-  chains: [mainnet ,bnbChain,localChain],
+  chains: [mainnet ,bnbChain,sepolia,localChain],
   //ssr: true, // If your dApp uses server side rendering (SSR)
   transports: {
     [mainnet.id]:  http('https://eth-sepolia.g.alchemy.com/v2/1YybJp4OA3ZZDOrmhuzky8_MACPdghWu'),
+    [sepolia.id]:  http('https://eth-sepolia.g.alchemy.com/v2/1YybJp4OA3ZZDOrmhuzky8_MACPdghWu'),
     [bnbChain.id]:  http('https://eth-sepolia.g.alchemy.com/v2/1YybJp4OA3ZZDOrmhuzky8_MACPdghWu'),
     [localhost.id]:   http("http://localhost:8545")
   },

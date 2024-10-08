@@ -53,7 +53,7 @@ function Erc20claim() {
 				          message: 'Please input total!',
 				        },
 				      ]}>
-				      <InputNumber defaultValue={21000000}/>
+				      <InputNumber initialValues={21000000}/>
 				    </Form.Item>
 
 
@@ -65,7 +65,7 @@ function Erc20claim() {
 				          message: '!',
 				        }
 				      ]}>
-						<InputNumber defaultValue={18}/>
+						<InputNumber initialValues={18}/>
 					</Form.Item>
 					
 
