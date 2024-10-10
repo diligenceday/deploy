@@ -35,22 +35,22 @@ function Erc20claim() {
 	}
 
 ////////////////////////////////////////////////////////////
-	const [buyFundFee,setBuyFundFee]=useState(0.01);
+	const [buyFundFee,setBuyFundFee]=useState(1);
 	const changeBuyFundFee = function(val){
 		setBuyFundFee(val)
 	}
 
-	const [buy_burnFee,setBuy_burnFee]=useState(0.01);
+	const [buy_burnFee,setBuy_burnFee]=useState(1);
 	const changeBuy_burnFee = function(val){
 		setBuy_burnFee(val)
 	}
 
-	const [buyReflectFee,setBuyReflectFee]=useState(0.01);
+	const [buyReflectFee,setBuyReflectFee]=useState(1);
 	const changeBuyReflectFee = function(val){
 		setBuyReflectFee(val)
 	}
 
-	const [buyLPFee,setBuyLPFee]=useState(0.01);
+	const [buyLPFee,setBuyLPFee]=useState(1);
 	const changeBuyLPFee = function(val){
 		setBuyLPFee(val)
 	}
@@ -62,22 +62,22 @@ function Erc20claim() {
 	//num8 sell _sellLPFee
 
 
-	const [sellFundFee,setSellFundFee]=useState(0.01);
+	const [sellFundFee,setSellFundFee]=useState(1);
 	const changeSellFundFee = function(val){
 		setSellFundFee(val)
 	}
 
-	const [sell_burnFee,setSell_burnFee]=useState(0.01);
+	const [sell_burnFee,setSell_burnFee]=useState(1);
 	const changeSell_burnFee = function(val){
 		setSell_burnFee(val)
 	}
 
-	const [sellReflectFee,setSellReflectFee]=useState(0.01);
+	const [sellReflectFee,setSellReflectFee]=useState(1);
 	const changeSellReflectFee = function(val){
 		setSellReflectFee(val)
 	}
 
-	const [sellLPFee,setSellLPFee]=useState(0.01);
+	const [sellLPFee,setSellLPFee]=useState(1);
 	const changeSellLPFee = function(val){
 		setSellLPFee(val)
 	}
@@ -105,15 +105,15 @@ function Erc20claim() {
 					precision,
 					total,
 
-					Math.floor(100 * Number(buyFundFee)) ,
-					Math.floor(100 * Number(buyLPFee))  ,
-					Math.floor(100 * Number(buyReflectFee))  ,
-					Math.floor(100 * Number(buy_burnFee))  ,
+					Math.floor(1*Number(buyFundFee)) ,
+					Math.floor(1* Number(buyLPFee))  ,
+					Math.floor(1* Number(buyReflectFee))  ,
+					Math.floor(1* Number(buy_burnFee))  ,
 
-					Math.floor(100 * Number(sellFundFee))  ,
-					Math.floor(100 * Number(sellLPFee))  ,
-					Math.floor(100 * Number(sellReflectFee))  ,
-					Math.floor(100 * Number(sell_burnFee))  ,
+					Math.floor(1* Number(sellFundFee))  ,
+					Math.floor(1* Number(sellLPFee))  ,
+					Math.floor(1* Number(sellReflectFee))  ,
+					Math.floor(1* Number(sell_burnFee))  ,
 
 					0
 				],
@@ -221,37 +221,37 @@ function Erc20claim() {
 
 					<Anchor>买入税率：</Anchor>
 					<Form.Item label="营销税率">
-						<InputNumber  onChange={changeBuyFundFee} addonAfter="%" defaultValue={sellFundFee} />
+						<InputNumber  onChange={changeBuyFundFee} addonAfter="%%" defaultValue={buyFundFee} />
 					</Form.Item>
 
 					<Form.Item label="销毁税率">
-						<InputNumber onChange={changeBuy_burnFee} addonAfter="%" defaultValue={buy_burnFee} />
+						<InputNumber onChange={changeBuy_burnFee} addonAfter="%%" defaultValue={buy_burnFee} />
 					</Form.Item>
 
 					<Form.Item label="回流税率">
-						<InputNumber onChange={changeBuyReflectFee} addonAfter="%" defaultValue={buyReflectFee} />
+						<InputNumber onChange={changeBuyReflectFee} addonAfter="%%" defaultValue={buyReflectFee} />
 					</Form.Item>
 
 					<Form.Item label="分红税率">
-						<InputNumber onChange={changeBuyLPFee} addonAfter="%" defaultValue={buyLPFee} />
+						<InputNumber onChange={changeBuyLPFee} addonAfter="%%" defaultValue={buyLPFee} />
 					</Form.Item>
 
 
 					<Anchor>卖出税率：</Anchor>
 					<Form.Item label="营销税率">
-						<InputNumber onChange={changeSellFundFee} addonAfter="%" defaultValue={buyFundFee} />
+						<InputNumber onChange={changeSellFundFee} addonAfter="%%" defaultValue={sellFundFee} />
 					</Form.Item>
 
 					<Form.Item label="销毁税率">
-						<InputNumber onChange={changeSell_burnFee} addonAfter="%" defaultValue={sell_burnFee} />
+						<InputNumber onChange={changeSell_burnFee} addonAfter="%%" defaultValue={sell_burnFee} />
 					</Form.Item>
 
 					<Form.Item label="回流税率">
-						<InputNumber onChange={changeSellReflectFee} addonAfter="%" defaultValue={sellReflectFee} />
+						<InputNumber onChange={changeSellReflectFee} addonAfter="%%" defaultValue={sellReflectFee} />
 					</Form.Item>
 
 					<Form.Item label="分红税率">
-						<InputNumber onChange={changeSellLPFee} addonAfter="%" defaultValue={sellLPFee} />
+						<InputNumber onChange={changeSellLPFee} addonAfter="%%" defaultValue={sellLPFee} />
 					</Form.Item>
 
 

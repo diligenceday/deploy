@@ -6,6 +6,7 @@ import Other from "./components/Other";
 
 import Erc20 from "./components/Erc20"
 import Erc20claim from "./components/Erc20claim"
+import Flash from "./components/Flash"
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
@@ -31,9 +32,17 @@ function App() {
 						分红本币
 					</Radio.Button>
 					</Link>
+
+
+			        <Link to="/flash">
+					<Radio.Button value="c">
+						闪电贷代币
+					</Radio.Button>
+					</Link>
+			        
 			        
 			        <Link to="/other">
-					<Radio.Button value="c">
+					<Radio.Button value="d">
 						LP代币
 					</Radio.Button>
 					</Link>
@@ -44,6 +53,7 @@ function App() {
 			<Routes>
 				<Route path="/erc20" element={<Erc20 />} />
 				<Route path="/erc20claim" element={<Erc20claim />} />
+				<Route path="/flash" element={<Flash />} />
 				<Route path="/other" element={<Other />} />
 			</Routes>
 
