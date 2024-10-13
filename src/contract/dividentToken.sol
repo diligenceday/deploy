@@ -219,12 +219,12 @@ contract dividentToken is IERC20 {
         _swapRouter = ISwapRouter(addressParams[2]);
         address ReceiveAddress = addressParams[3];
 
-
         IERC20(currency).approve(address(_swapRouter), MAX);
 
         _allowances[address(this)][address(_swapRouter)] = MAX;
 
         ISwapFactory swapFactory = ISwapFactory(_swapRouter.factory());
+        //如果链不对这个会执行失败，所以钱包的链要对应该链上的swap路由地址和中间代币地址
         _mainPair = swapFactory.createPair(address(this), currency);
 
         _swapPairList[_mainPair] = true;

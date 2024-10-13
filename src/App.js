@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Dao from "./components/Dao";
 import Other from "./components/Other";
 
 import Erc20 from "./components/Erc20"
@@ -40,6 +41,11 @@ function App() {
 					</Radio.Button>
 					</Link>
 			        
+			        <Link to="/dao">
+					<Radio.Button value="d">
+						Dao投票治理代币
+					</Radio.Button>
+					</Link>
 			        
 			        <Link to="/other">
 					<Radio.Button value="d">
@@ -54,6 +60,7 @@ function App() {
 				<Route path="/erc20" element={<Erc20 />} />
 				<Route path="/erc20claim" element={<Erc20claim />} />
 				<Route path="/flash" element={<Flash />} />
+				<Route path="/dao" element={<Dao />} />
 				<Route path="/other" element={<Other />} />
 			</Routes>
 
