@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Deploy DApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web3 合约部署工具集 — 无需编程,网页上即可在多链上部署常见代币与流动性合约。
 
-## Available Scripts
+## 在线预览
 
-In the project directory, you can run:
+🔗 **https://diligenceday.github.io/deploy/**
 
-### `npm start`
+打开后连接钱包(Ethereum / BNB Chain / Polygon / Arbitrum / Optimism / Base / Sepolia)即可使用。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 功能列表
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 合约部署(6 个)
 
-### `npm test`
+| 工具 | 合约 | 用途 |
+|---|---|---|
+| 标准代币 | ERC20 | 部署标准 ERC20 代币 |
+| 分红本币 | dividentToken | 部署持币分红奖励合约 |
+| 闪贷代币 | ERC20FlashMint | 部署支持闪贷的代币 |
+| DAO 治理 | BaseDao | 部署链上治理合约 |
+| 黑洞燃烧 | BlackHole | 部署代币销毁机制 |
+| LP Token 合约 | LP token | 部署流动性提供者代币 |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 辅助工具(2 个)
 
-### `npm run build`
+| 工具 | 用途 |
+|---|---|
+| 批量转账 | 单笔交易向多地址发送代币(空投) |
+| LP 锁仓 | 锁定 LP token,防跑路(3 步:部署 Locker → Approve → Deposit) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 技术栈
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React** 18 + **Vite** 5
+- **wagmi** 2.x + **viem** 2.x + **RainbowKit** 2.x
+- **antd** 5
+- **React Router** 6
+- **Solidity** 0.8.20
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 本地运行
 
-### `npm run eject`
+```bash
+git clone https://github.com/diligenceday/deploy.git
+cd deploy
+npm install
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+默认 `http://localhost:5173/deploy/`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 构建部署
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+产物输出到 `build/`,可直接部署到 GitHub Pages / Vercel / Netlify 等静态托管。
 
-## Learn More
+GitHub Actions 配置见 `.github/workflows/static.yml`,push 到 main 分支自动部署到 GitHub Pages。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 合约源码
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+所有合约源码在 `src/contract/`,可直接 Remix 编译后替换 `src/cfg.js` 里的 abi/bytecode。
 
-### Code Splitting
+| 合约文件 | 编译版本 |
+|---|---|
+| `erc20.sol` | ^0.8.18 |
+| `dividentToken.sol` | ^0.8.18 |
+| `ERC20FlashMint.sol` | ^0.8.18 |
+| `BaseDao.sol` | ^0.8.18 |
+| `LPTokenLocker.sol` | ^0.8.20 (需 OpenZeppelin) |
+| `allToken.sol` | ^0.8.18 |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 注意事项
 
-### Analyzing the Bundle Size
+- 部署合约需要支付链上 Gas 费,本工具不收取额外费用
+- 合约一旦部署即不可更改,参数请仔细核对
+- 部署历史仅保存在本地浏览器(localStorage),不会上传服务器
+- LP 锁仓的 LPTokenLocker 合约部署后,需手动 Approve LP token 再调 deposit()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 反馈
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub: https://github.com/diligenceday/deploy
