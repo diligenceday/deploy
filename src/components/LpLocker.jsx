@@ -122,40 +122,6 @@ export default function LpLocker() {
     }
   };
 
-  if (!hasBytecode) {
-    return (
-      <Space direction="vertical" size={16} style={{ width: '100%' }}>
-        <Alert
-          type="warning"
-          showIcon
-          message="LPTokenLocker 合约 bytecode 未配置"
-          description={
-            <div>
-              <Paragraph>
-                LP 锁仓合约需要先用 Remix 编译 LPTokenLocker.sol,然后把 abi + bytecode 给我,我接到 cfg.js。
-              </Paragraph>
-              <Paragraph copyable={{ text: 'src/contract/LPTokenLocker.sol' }}>
-                合约文件: <Text code>src/contract/LPTokenLocker.sol</Text>
-              </Paragraph>
-              <Paragraph>
-                编译步骤:
-                <ol>
-                  <li>打开 https://remix.ethereum.org</li>
-                  <li>新建 <code>LPTokenLocker.sol</code>, 粘贴上面路径里的代码</li>
-                  <li>Solidity 编译器选 0.8.20</li>
-                  <li>Remix 会自动加载 @openzeppelin 依赖</li>
-                  <li>编译后切到 "Solidity Compiler" → "Compilation Details"</li>
-                  <li>复制 ABI 和 BYTECODE 给我</li>
-                </ol>
-              </Paragraph>
-            </div>
-          }
-        />
-        <DeployHistory />
-      </Space>
-    );
-  }
-
   return (
     <Space direction="vertical" size={16} style={{ width: '100%' }}>
       <Alert
