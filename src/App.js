@@ -1,73 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Erc20 from "./components/Erc20";
+import Erc20claim from "./components/Erc20claim";
+import Flash from "./components/Flash";
 import Dao from "./components/Dao";
 import Other from "./components/Other";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Layout, Menu } from "antd";
 
-import Erc20 from "./components/Erc20"
-import Erc20claim from "./components/Erc20claim"
-import Flash from "./components/Flash"
-import { Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Menu } from "antd";
-import { Grid } from "antd";
-import { Col, Row ,Button,Anchor,Radio} from 'antd';
+const { Sider, Content } = Layout;
 
+const TABS = [
+  { key: '/erc20', label: '标准代币' },
+  { key: '/erc20claim', label: '分红本币' },
+  { key: '/flash', label: '闪电贷代币' },
+  { key: '/dao', label: 'Dao 治理代币' },
+  { key: '/other', label: 'LP 代币' },
+];
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // 当前选中的 menu key(精确匹配路由)
+  const selectedKey = TABS.find(t => t.key === location.pathname)?.key || '/erc20';
+
   return (
-    <div className="App">
-      <Header></Header>
-		<div>
-	      	<div class="align-left">
-		      	<Radio.Group  defaultValue="a">
-					<Link to="/erc20">
-					<Radio.Button value="a" >
-						标准代币
-					</Radio.Button>
-					</Link>
-
-					<Link to="/erc20claim">
-					<Radio.Button value="b">
-						分红本币
-					</Radio.Button>
-					</Link>
-
-
-			        <Link to="/flash">
-					<Radio.Button value="c">
-						闪电贷代币
-					</Radio.Button>
-					</Link>
-			        
-			        <Link to="/dao">
-					<Radio.Button value="d">
-						Dao投票治理代币
-					</Radio.Button>
-					</Link>
-			        
-			        <Link to="/other">
-					<Radio.Button value="d">
-						LP代币
-					</Radio.Button>
-					</Link>
-			        
-				</Radio.Group>
-	      	</div>
-			<div class="h20"></div>
-			<Routes>
-				<Route path="/erc20" element={<Erc20 />} />
-				<Route path="/erc20claim" element={<Erc20claim />} />
-				<Route path="/flash" element={<Flash />} />
-				<Route path="/dao" element={<Dao />} />
-				<Route path="/other" element={<Other />} />
-			</Routes>
-
-		</div>
-      <Footer>
-      </Footer>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Header />
+      <Layout>
+        <Sider width={200} className="app-sider">
+          <Menu
+            mode="inline"
+            theme="dark"
+            selectedKeys={[selectedKey]}
+            style={{ height: '100%' }}
+            items={TABS.map(t => ({ key: t.key, label: t.label }))}
+            onClick={({ key }) => navigate(key)}
+          />
+        </Sider>
+        <Content className="app-content">
+          <Routes>
+            <Route path="/" element={<Erc20 />} />
+            <Route path="/erc20" element={<Erc20 />} />
+            <Route path="/erc20claim" element={<Erc20claim />} />
+            <Route path="/flash" element={<Flash />} />
+            <Route path="/dao" element={<Dao />} />
+            <Route path="/other" element={<Other />} />
+          </Routes>
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
 

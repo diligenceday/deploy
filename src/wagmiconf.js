@@ -43,9 +43,9 @@ export const config = createConfig({
   chains: [mainnet ,bnbChain,sepolia,localChain],
   //ssr: true, // If your dApp uses server side rendering (SSR)
   transports: {
-    [mainnet.id]:  http('https://eth-sepolia.g.alchemy.com/v2/1YybJp4OA3ZZDOrmhuzky8_MACPdghWu'),
-    [sepolia.id]:  http('https://eth-sepolia.g.alchemy.com/v2/1YybJp4OA3ZZDOrmhuzky8_MACPdghWu'),
-    [bnbChain.id]:  http('https://eth-sepolia.g.alchemy.com/v2/1YybJp4OA3ZZDOrmhuzky8_MACPdghWu'),
+    [mainnet.id]:  http(),
+    [sepolia.id]:  http('https://ethereum-sepolia-rpc.publicnode.com'),
+    [bnbChain.id]:  http('https://bsc-dataseed.binance.org/'),
     [localhost.id]:   http("http://localhost:8545")
   },
 })
