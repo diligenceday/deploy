@@ -4,7 +4,8 @@ import Erc20 from "./components/Erc20";
 import Erc20claim from "./components/Erc20claim";
 import Flash from "./components/Flash";
 import Dao from "./components/Dao";
-import Other from "./components/Other";
+import BlackHole from "./components/BlackHole";
+import LpToken from "./components/LpToken";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
 
@@ -15,7 +16,8 @@ const TABS = [
   { key: '/erc20claim', label: '分红本币' },
   { key: '/flash', label: '闪电贷代币' },
   { key: '/dao', label: 'Dao 治理代币' },
-  { key: '/other', label: 'LP 代币' },
+  { key: '/blackhole', label: '黑洞燃烧' },
+  { key: '/lp', label: 'LP 代币' },
 ];
 
 function App() {
@@ -46,7 +48,8 @@ function App() {
             <Route path="/erc20claim" element={<Erc20claim />} />
             <Route path="/flash" element={<Flash />} />
             <Route path="/dao" element={<Dao />} />
-            <Route path="/other" element={<Other />} />
+            <Route path="/blackhole" element={<BlackHole />} />
+            <Route path="/lp" element={<LpToken />} />
           </Routes>
         </Content>
       </Layout>
