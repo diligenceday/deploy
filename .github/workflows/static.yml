@@ -31,13 +31,36 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Patch @base-org/account
+        # CRA 5 + babel 不支持 import ... with { type: 'json' }
+        # 详见 scripts/patch-base-org.sh
+        run: bash scripts/patch-base-org.sh
+
+      - name: Build
+        run: npm run build
+
+      - name: Strip repo-name prefix from built HTML
+        # 本地用 build 目录直开时不带 /deploy/build/ 前缀
+        run: sed -i 's|/deploy/build/||g' build/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload the build output (not the whole repo)
+          path: './build'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
