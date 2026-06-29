@@ -22,17 +22,11 @@ const buildArgs = (v) => [v._pairToken, v.name_, v.symbol_];
 
 export default function LpToken() {
   return (
-    <div>
-      <div style={{ background: '#fffbe6', border: '1px solid #ffe58f', padding: 12, marginBottom: 16, borderRadius: 4, color: '#874d00' }}>
-        ⚠️ LP 合约 bytecode 正在重新编译中,当前部署可能失败。
-        <br />配对代币推荐: BNB Chain USDT <code>0x55d398326f99059fF775485246999027B3197955</code>
-      </div>
-      <DeployForm
-        abiKey="liquidityToken"
-        fields={fields}
-        buildArgs={buildArgs}
-        submitText="创建 LP 代币"
-      />
-    </div>
+    <DeployForm
+      abiKey="liquidityToken"
+      fields={fields}
+      buildArgs={buildArgs}
+      submitText="创建 LP 代币"
+    />
   );
 }
