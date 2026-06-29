@@ -49,10 +49,6 @@ jobs:
         # CI=false 避免 CRA 把 eslint warning 当 error 失败
         run: CI=false npm run build
 
-      - name: Strip repo-name prefix from built HTML
-        # 本地用 build 目录直开时不带 /deploy/build/ 前缀
-        run: sed -i 's|/deploy/build/||g' build/index.html
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
