@@ -40,12 +40,16 @@ const localChain = {
 
 // alert(localhost.id)
 export const config = createConfig({
-  chains: [mainnet ,bnbChain,sepolia,localChain],
+  chains: [mainnet, bnbChain, polygon, arbitrum, optimism, base, sepolia, localChain],
   //ssr: true, // If your dApp uses server side rendering (SSR)
   transports: {
-    [mainnet.id]:  http(),
+    [mainnet.id]:  http('https://ethereum-rpc.publicnode.com'),
     [sepolia.id]:  http('https://ethereum-sepolia-rpc.publicnode.com'),
     [bnbChain.id]:  http('https://bsc-dataseed.binance.org/'),
-    [localhost.id]:   http("http://localhost:8545")
+    [polygon.id]:   http('https://polygon-bor-rpc.publicnode.com'),
+    [arbitrum.id]:  http('https://arbitrum-one-rpc.publicnode.com'),
+    [optimism.id]:  http('https://optimism-rpc.publicnode.com'),
+    [base.id]:      http('https://base-rpc.publicnode.com'),
+    [localhost.id]: http("http://localhost:8545"),
   },
 })

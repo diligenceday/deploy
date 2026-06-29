@@ -34,7 +34,7 @@ root.render(
   <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL || '/'}>
               <App />
           </BrowserRouter>
         </RainbowKitProvider>
