@@ -13,7 +13,8 @@ export default function Dao() {
       abiKey="BaseDao"
       fields={fields}
       buildArgs={buildArgs}
-      submitText="创建Dao合约"
+      submitText="创建 Dao 治理代币"
+      typeLabel="DAO 治理"
     />
   );
 }

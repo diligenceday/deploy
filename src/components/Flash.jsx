@@ -17,6 +17,7 @@ export default function Flash() {
       fields={fields}
       buildArgs={buildArgs}
       submitText="创建闪电贷代币"
+      typeLabel="闪贷代币"
     />
   );
 }

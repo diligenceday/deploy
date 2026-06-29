@@ -27,6 +27,7 @@ export default function LpToken() {
       fields={fields}
       buildArgs={buildArgs}
       submitText="创建 LP 代币"
+      typeLabel="LP 代币"
     />
   );
 }

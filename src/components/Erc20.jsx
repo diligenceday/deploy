@@ -22,6 +22,7 @@ export default function Erc20() {
       fields={fields}
       buildArgs={buildArgs}
       submitText="创建合约代币"
+      typeLabel="标准代币"
     />
   );
 }

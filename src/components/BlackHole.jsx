@@ -29,6 +29,7 @@ export default function BlackHole() {
       fields={fields}
       buildArgs={buildArgs}
       submitText="创建黑洞燃烧代币"
+      typeLabel="黑洞燃烧"
     />
   );
 }

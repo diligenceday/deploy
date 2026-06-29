@@ -3,11 +3,13 @@ import { Flex } from "antd";
 import "../main.css";
 
 const boxStyle = {
-  width: '100%'
+  width: '100%',
+  background: '#fff',
+  borderBottom: '1px solid #f0f0f0',
+  boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
 };
 
 // 跟 favicon.svg 视觉一致: 渐变蓝紫底 + 堆叠合约 + 闪电
-// 32x32 viewBox 适配 Header 尺寸
 function Logo() {
   return (
     <svg
@@ -25,13 +27,10 @@ function Logo() {
           <stop offset="100%" stopColor="#722ed1" />
         </linearGradient>
       </defs>
-      {/* 圆角底 */}
       <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#logoGrad)" />
-      {/* 堆叠合约: 3 层 (从下到上: 浅→实) */}
       <rect x="8" y="20" width="14" height="3" rx="0.75" fill="#ffffff" opacity="0.55" />
       <rect x="8" y="16" width="14" height="3" rx="0.75" fill="#ffffff" opacity="0.75" />
       <rect x="8" y="12" width="14" height="3" rx="0.75" fill="#ffffff" />
-      {/* 闪电: deploy 动作 */}
       <path
         d="M19 6 L13 17 H17 L15 24 L23 13 H19 Z"
         fill="#ffd666"
@@ -46,9 +45,9 @@ function Logo() {
 function Header() {
   return (
     <Flex justify="space-between" align="center" style={boxStyle}>
-      <Flex align="center" gap="middle">
+      <Flex align="center" gap={10}>
         <Logo />
-        <span style={{ fontSize: 18, fontWeight: 600, color: '#fff' }}>
+        <span style={{ fontSize: 18, fontWeight: 600, color: '#000' }}>
           Deploy DApp
         </span>
       </Flex>

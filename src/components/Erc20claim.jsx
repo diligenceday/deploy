@@ -3,20 +3,21 @@ import DeployForm from './DeployForm.jsx';
 const num = (v) => Math.floor(1 * Number(v || 0));
 
 const fields = [
-  { name: 'tokenName', label: 'token name 代币名称', type: 'text', required: true },
-  { name: 'symbolName', label: 'symbol name', type: 'text', required: true },
+  // 基础信息
+  { name: 'tokenName', label: 'token name 代币名称', type: 'text', required: true, group: '基础信息' },
+  { name: 'symbolName', label: 'symbol name 代币符号', type: 'text', required: true },
   { name: 'total', label: 'total 代币发行量', type: 'number', defaultValue: 2000000, required: true },
   { name: 'precision', label: '代币精度', type: 'number', defaultValue: 18, required: true },
   // 买入税率
-  { name: 'buyFundFee', label: '营销税率', type: 'number', defaultValue: 1, addonAfter: '%%', group: '买入税率' },
-  { name: 'buy_burnFee', label: '销毁税率', type: 'number', defaultValue: 1, addonAfter: '%%' },
-  { name: 'buyReflectFee', label: '回流税率', type: 'number', defaultValue: 1, addonAfter: '%%' },
-  { name: 'buyLPFee', label: '分红税率', type: 'number', defaultValue: 1, addonAfter: '%%' },
+  { name: 'buyFundFee', label: '营销税率', type: 'number', defaultValue: 1, addonAfter: '%', group: '买入税率' },
+  { name: 'buy_burnFee', label: '销毁税率', type: 'number', defaultValue: 1, addonAfter: '%' },
+  { name: 'buyReflectFee', label: '回流税率', type: 'number', defaultValue: 1, addonAfter: '%' },
+  { name: 'buyLPFee', label: '分红税率', type: 'number', defaultValue: 1, addonAfter: '%' },
   // 卖出税率
-  { name: 'sellFundFee', label: '营销税率', type: 'number', defaultValue: 1, addonAfter: '%%', group: '卖出税率' },
-  { name: 'sell_burnFee', label: '销毁税率', type: 'number', defaultValue: 1, addonAfter: '%%' },
-  { name: 'sellReflectFee', label: '回流税率', type: 'number', defaultValue: 1, addonAfter: '%%' },
-  { name: 'sellLPFee', label: '分红税率', type: 'number', defaultValue: 1, addonAfter: '%%' },
+  { name: 'sellFundFee', label: '营销税率', type: 'number', defaultValue: 1, addonAfter: '%', group: '卖出税率' },
+  { name: 'sell_burnFee', label: '销毁税率', type: 'number', defaultValue: 1, addonAfter: '%' },
+  { name: 'sellReflectFee', label: '回流税率', type: 'number', defaultValue: 1, addonAfter: '%' },
+  { name: 'sellLPFee', label: '分红税率', type: 'number', defaultValue: 1, addonAfter: '%' },
   // 路由 & 底池
   { name: 'router', label: '合约路由地址', type: 'text', defaultValue: '0x10ED43C718714eb63d5aA57B78B54704E256024E', required: true, group: '链上参数' },
   { name: 'currency', label: '底池代币地址', type: 'text', required: true },
@@ -31,7 +32,6 @@ const chainRefs = (
   </div>
 );
 
-// 对应原 args
 const buildArgs = (v, account) => [
   [v.tokenName, v.symbolName],
   ['0x0000000000000000000000000000000000000000', v.currency, v.router, account],
@@ -54,6 +54,7 @@ export default function Erc20claim() {
         fields={fields}
         buildArgs={buildArgs}
         submitText="创建分红本币"
+        typeLabel="分红本币"
       />
     </div>
   );

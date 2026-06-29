@@ -1,13 +1,9 @@
 .header {
-  padding: 10px;
-}
-.align-left {
-  text-align: left;
+  padding: 12px 24px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
 }
 .logo {
   width: 32px;
   height: 32px;
-}
-.h20 {
-  height: 20px;
 }
