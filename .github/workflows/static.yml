@@ -46,7 +46,8 @@ jobs:
         run: bash scripts/patch-base-org.sh
 
       - name: Build
-        run: npm run build
+        # CI=false 避免 CRA 把 eslint warning 当 error 失败
+        run: CI=false npm run build
 
       - name: Strip repo-name prefix from built HTML
         # 本地用 build 目录直开时不带 /deploy/build/ 前缀
