@@ -6,7 +6,8 @@ const boxStyle = {
   width: '100%'
 };
 
-// 自带 inline SVG logo,避免外网依赖
+// 跟 favicon.svg 视觉一致: 渐变蓝紫底 + 堆叠合约 + 闪电
+// 32x32 viewBox 适配 Header 尺寸
 function Logo() {
   return (
     <svg
@@ -18,13 +19,24 @@ function Logo() {
       aria-label="Deploy DApp logo"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect x="2" y="2" width="28" height="28" rx="6" fill="#1677ff" />
+      <defs>
+        <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#1677ff" />
+          <stop offset="100%" stopColor="#722ed1" />
+        </linearGradient>
+      </defs>
+      {/* 圆角底 */}
+      <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#logoGrad)" />
+      {/* 堆叠合约: 3 层 (从下到上: 浅→实) */}
+      <rect x="8" y="20" width="14" height="3" rx="0.75" fill="#ffffff" opacity="0.55" />
+      <rect x="8" y="16" width="14" height="3" rx="0.75" fill="#ffffff" opacity="0.75" />
+      <rect x="8" y="12" width="14" height="3" rx="0.75" fill="#ffffff" />
+      {/* 闪电: deploy 动作 */}
       <path
-        d="M10 16 L14 20 L22 12"
+        d="M19 6 L13 17 H17 L15 24 L23 13 H19 Z"
+        fill="#ffd666"
         stroke="#fff"
-        strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
+        strokeWidth="0.4"
         strokeLinejoin="round"
       />
     </svg>
