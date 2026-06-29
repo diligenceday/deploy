@@ -1,4 +1,4 @@
-import DeployForm from './DeployForm';
+import DeployForm from './DeployForm.jsx';
 
 const num = (v) => Math.floor(1 * Number(v || 0));
 

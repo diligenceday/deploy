@@ -1,22 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from './App.jsx';
 import { BrowserRouter } from "react-router-dom";
 import '@rainbow-me/rainbowkit/styles.css';
 import {
-  getDefaultConfig,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-} from 'wagmi/chains';
 import {
   QueryClientProvider,
   QueryClient,
@@ -27,6 +18,10 @@ import {config} from "./wagmiconf.js";
 const queryClient = new QueryClient();
 
 
+// Vite 用 import.meta.env.BASE_URL,等价于 CRA 的 process.env.PUBLIC_URL
+// 在 gh-pages = "/deploy/", 本地 dev = "/"
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
@@ -34,7 +29,7 @@ root.render(
   <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <BrowserRouter basename={process.env.PUBLIC_URL || '/'}>
+          <BrowserRouter basename={basename || '/'}>
               <App />
           </BrowserRouter>
         </RainbowKitProvider>
@@ -44,7 +39,4 @@ root.render(
 
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Vite 不需要 reportWebVitals (CRA 特性)

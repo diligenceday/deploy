@@ -38,16 +38,11 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
-
-      - name: Patch @base-org/account
-        # CRA 5 + babel 不支持 import ... with { type: 'json' }
-        # 详见 scripts/patch-base-org.sh
-        run: bash scripts/patch-base-org.sh
+        run: npm ci
 
       - name: Build
-        # CI=false 避免 CRA 把 eslint warning 当 error 失败
-        run: CI=false npm run build
+        # Vite: 30s build, 默认不查 ESLint warning
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

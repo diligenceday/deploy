@@ -1,4 +1,4 @@
-import DeployForm from './DeployForm';
+import DeployForm from './DeployForm.jsx';
 
 const fields = [
   { name: 'tokenfee', label: 'token fee 代币入会费用', type: 'text', defaultValue: '100000000000', addonAfter: 'wei', required: true },

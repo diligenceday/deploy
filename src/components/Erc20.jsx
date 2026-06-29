@@ -1,4 +1,4 @@
-import DeployForm from './DeployForm';
+import DeployForm from './DeployForm.jsx';
 
 const fields = [
   { name: 'tokenName', label: 'token name 代币名称', type: 'text', required: true },

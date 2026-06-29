@@ -1,11 +1,11 @@
 import './App.css';
-import Header from "./components/Header";
-import Erc20 from "./components/Erc20";
-import Erc20claim from "./components/Erc20claim";
-import Flash from "./components/Flash";
-import Dao from "./components/Dao";
-import BlackHole from "./components/BlackHole";
-import LpToken from "./components/LpToken";
+import Header from "./components/Header.jsx";
+import Erc20 from "./components/Erc20.jsx";
+import Erc20claim from "./components/Erc20claim.jsx";
+import Flash from "./components/Flash.jsx";
+import Dao from "./components/Dao.jsx";
+import BlackHole from "./components/BlackHole.jsx";
+import LpToken from "./components/LpToken.jsx";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
 

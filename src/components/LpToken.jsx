@@ -1,4 +1,4 @@
-import DeployForm from './DeployForm';
+import DeployForm from './DeployForm.jsx';
 
 // 常用 pair token 地址 (USDT on 主流链)
 // BNB Chain USDT = 0x55d398326f99059fF775485246999027B3197955
