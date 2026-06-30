@@ -1,5 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Flex } from "antd";
+import { Flex, Button } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import "../main.css";
 
 const boxStyle = {
@@ -7,6 +8,8 @@ const boxStyle = {
   background: '#fff',
   borderBottom: '1px solid #f0f0f0',
   boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
+  padding: '0 16px',
+  height: 56,
 };
 
 // 跟 favicon.svg 视觉一致: 渐变蓝紫底 + 堆叠合约 + 闪电
@@ -42,10 +45,19 @@ function Logo() {
   );
 }
 
-function Header() {
+function Header({ onMenuClick, showMenuButton }) {
   return (
     <Flex justify="space-between" align="center" style={boxStyle}>
       <Flex align="center" gap={10}>
+        {showMenuButton && (
+          <Button
+            type="text"
+            icon={<MenuOutlined />}
+            onClick={onMenuClick}
+            aria-label="打开菜单"
+            style={{ marginLeft: -8 }}
+          />
+        )}
         <Logo />
         <span style={{ fontSize: 18, fontWeight: 600, color: '#000' }}>
           Deploy DApp
